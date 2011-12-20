@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Computer Graphics</title>
+        <link rel='stylesheet' href='style.css' />
+    </head>
+    <body>
+        <canvas></canvas>
+        <script src='helper2.js'></script>
+        <script>
+            var points = [];
+            var NUM_POINTS = 500;
+
+            for ( var i = 0; i < NUM_POINTS; ++i ) {
+                var x = Math.random() * 2 - 1;
+                var y = Math.random() * 2 - 1;
+                var z = Math.random() * 2 - 1;
+
+                points.push( [ x, y, z ] );
+            }
+
+            function render() {
+                var x, y, z, point;
+
+                clearCanvas();
+
+                for ( var i = 0; i < NUM_POINTS; ++i ) {
+                    point = points[ i ];
+                    x = point[ 0 ];
+                    y = point[ 1 ];
+                    z = point[ 2 ];
+
+                    points[ i ] = rotateY( points[ i ], 0.01 );
+                    points[ i ] = rotateX( points[ i ], 0.005 );
+
+                    x = x / ( z / 2 + 1.5 );
+                    y = y / ( z / 2 + 1.5 );
+
+                    drawPoint( x, y );
+                }
+            }
+
+            function startMoving() {
+                setInterval( render, 17 );
+                document.body.removeEventListener( 'click', startMoving );
+            } 
+            document.body.addEventListener( 'click', startMoving );
+            render();
+        </script>
+    </body>
+</html>

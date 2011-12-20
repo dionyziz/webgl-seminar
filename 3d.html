@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Computer Graphics</title>
+        <link rel='stylesheet' href='style.css' />
+    </head>
+    <body>
+        <canvas></canvas>
+        <script src='helper2.js'></script>
+        <script>
+            for ( var i = 0; i < 500; ++i ) {
+                var x = Math.random() * 2 - 1;
+                var y = Math.random() * 2 - 1;
+                var z = Math.random() * 2 + 2;
+
+                x /= z;
+                y /= z;
+
+                drawPoint( x, y );
+            }
+        </script>
+    </body>
+</html>
