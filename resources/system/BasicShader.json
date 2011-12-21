@@ -5,9 +5,7 @@
             "data": {
                 "vertexSource": [
                     "attribute vec3 Position;",
-                    "attribute vec3 Normal;",
                     "uniform mat4 WorldViewProjectionMatrix;",
-                    "varying vec3 N;",
 
                     "#ifdef HARDWARE_SKINNING",
                         "#define NUM_BONES 70",
@@ -58,17 +56,15 @@
                         "#else",
                             "gl_Position = WorldViewProjectionMatrix * vec4( Position, 1.0 );",
                         "#endif",
-                        "N = Normal;",
                     "}"
                 ],
                 "fragmentSource": [
                     "precision highp float;",
                     "uniform vec3 Diffuse;",
-                    "varying vec3 N;",
 
                     "void main(){",
                         "vec3 diffuse = Diffuse;",
-                        "gl_FragColor = vec4( N * 0.5 + 0.5, 1.0 );",
+                        "gl_FragColor = vec4( diffuse, 1.0 );",
                     "}"
                 ]
             }

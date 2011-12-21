@@ -8,15 +8,16 @@
         <script src='final-engine-debug.js'></script>
         <script>
             var app = new Application();
-            var X_AXIS = new Vector3( [ 1, 0, 0 ] );
-            var Y_AXIS = new Vector3( [ 0, 1, 0 ] );
+            X_AXIS = new Vector3( [ 1, 0, 0 ] );
+            Y_AXIS = new Vector3( [ 0, 1, 0 ] );
 
             var cube = null;
-            app.importer.load( 'WeightedCompanionCubeHearted.obj', function( node ) {
+            app.importer.load( 'cube.obj', function( node ) {
                 cube = node;
                 cube.setScale( 2 );
                 app.scene.appendChild( cube );
             } );
+
             app.update = function( dt ) {
                 if ( cube ) {
                     cube.rotate( X_AXIS, 0.01 * dt / 16 );
@@ -26,4 +27,3 @@
         </script>
     </body>
 </html>
-
