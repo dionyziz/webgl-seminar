@@ -38,3 +38,12 @@ function drawPoint( x, y, color ) {
     ctx.fillStyle = color || 'white';
     ctx.fillRect( x, y, 0.01, 0.01 );
 }
+
+function drawTriangle( x0, y0, x1, y1, x2, y2, color ) {
+    ctx.fillStyle = color || 'white';
+    ctx.beginPath();
+    ctx.moveTo( x0, y0 );
+    ctx.lineTo( x1, y1 );
+    ctx.lineTo( x2, y2 );
+    ctx.fill();
+}
