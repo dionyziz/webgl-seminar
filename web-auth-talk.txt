@@ -104,28 +104,22 @@ B' = I * B
 
 Demo 8: Κύβος με φωτισμό ανά τρίγωνο
 
-TODO
+http://localhost/web-seminar-auth/demo1-plain_cube.html
 
 Η ιδέα της ισορροπίας ανάμεσα στην επίδοση και στην ομορφιά. Κατάργηση του βαρύκεντρου
 και φωτισμός σημείου. Τι είναι το WebGL; Η χρήση του για hardware acceleration. Δύο λόγια
 για το τι είναι shaders.
 
-Demo 9: Κύβος με φωτισμό ανά σημείο
+Demo 9: Φόρτωση μοντέλου από αρχείο. Αποθήκευση 3D δεδομένων σε αρχείο και ανάγνωσή του.
 
-TODO
-
-Φόρτωση μοντέλου από αρχείο. Αποθήκευση 3D δεδομένων σε αρχείο και ανάγνωσή του.
+http://localhost/web-seminar-auth/companion-cube-shaded.html
 
 Αντί όλα τα σημεία να είναι λευκά θα χρησιμοποιήσουμε μία εικόνα ως πηγή χρώματος.
 Σύστημα συντεταγμένων u, v και αντιστοιχία στο x, y. Σχήμα στο μαυροπίνακα.
 
 Demo 10: Κύβος companion cube με texturing
 
-http://dionyziz.kamibu.com/web-seminar-auth/companion-cube.html
-
-Demo 11: Συνδυασμός φωτισμού ανά σημείο και texturing
-
-TODO
+http://localhost/web-seminar-auth/companion-cube-shaded.html
 
 Ερωτήσεις;
 
