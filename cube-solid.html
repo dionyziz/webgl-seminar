@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Computer Graphics</title>
+        <link rel='stylesheet' href='style.css' />
+    </head>
+    <body>
+        <canvas></canvas>
+        <script src='helper2.js'></script>
+        <script src='cube-data.js'></script>
+        <script>
+            function rotateY( point, theta ) {
+                return [
+                    point[ 0 ] * Math.cos( theta ) - point[ 2 ] * Math.sin( theta ),
+                    point[ 1 ],
+                    point[ 0 ] * Math.sin( theta ) + point[ 2 ] * Math.cos( theta )
+                ];
+            }
+            function rotateX( point, theta ) {
+                return [
+                    point[ 0 ],
+                    point[ 1 ] * Math.cos( theta ) - point[ 2 ] * Math.sin( theta ),
+                    point[ 1 ] * Math.sin( theta ) + point[ 2 ] * Math.cos( theta ),
+                ];
+            }
+            
+
+            function render() {
+                ctx.fillStyle = 'black';
+                ctx.fillRect( -10, -10, 20, 20 );
+                
+                var numTriangles = cubeTriangles.length;
+                for ( var i = 0; i < numTriangles; i++ ) {
+                    var triangle = cubeTriangles[ i ];
+
+                    var a = triangle[ 0 ];
+                    var b = triangle[ 1 ];
+                    var c = triangle[ 2 ];
+
+                    triangle[ 0 ] = rotateX( triangle[ 0 ], 0.01 );
+                    triangle[ 0 ] = rotateY( triangle[ 0 ], 0.02 );
+
+                    triangle[ 1 ] = rotateX( triangle[ 1 ], 0.01 );
+                    triangle[ 1 ] = rotateY( triangle[ 1 ], 0.02 );
+
+                    triangle[ 2 ] = rotateX( triangle[ 2 ], 0.01 );
+                    triangle[ 2 ] = rotateY( triangle[ 2 ], 0.02 );
+
+                    var x0 = a[ 0 ];
+                    var y0 = a[ 1 ];
+                    var z0 = a[ 2 ];
+                    x0 = x0 / ( z0 / 2 + 2 );
+                    y0 = y0 / ( z0 / 2 + 2 );
+
+                    var x1 = b[ 0 ];
+                    var y1 = b[ 1 ];
+                    var z1 = b[ 2 ];
+                    x1 = x1 / ( z1 / 2 + 2 );
+                    y1 = y1 / ( z1 / 2 + 2 );
+
+                    var x2 = c[ 0 ];
+                    var y2 = c[ 1 ];
+                    var z2 = c[ 2 ];
+                    x2 = x2 / ( z2 / 2 + 2 );
+                    y2 = y2 / ( z2 / 2 + 2 );
+
+                    drawTriangle( x0, y0, x1, y1, x2, y2 );
+                }
+            }
+
+            setInterval( render, 17 );
+        </script>
+    </body>
+</html>
