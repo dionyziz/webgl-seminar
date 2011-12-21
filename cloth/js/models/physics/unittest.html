@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Physics Unit Test</title>
+	</head>
+	<body>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+        <script type="text/javascript" src="../events.js"></script>
+         <!-- Graphics -->
+        <script type="text/javascript" src="../graphics/glMatrix.js"></script>
+        <script type="text/javascript" src="../graphics/core.js"></script>
+        <script type="text/javascript" src="../graphics/abstractobject.js"></script>
+        <!-- Physics -->
+        <script type="text/javascript" src="physics.js"></script>	
+        <script type="text/javascript" src="dianismata.js"></script>
+        <script type="text/javascript" src="bounds.js"></script>
+        <script type="text/javascript" src="utility.js"></script>
+        <script type="text/javascript" src="rectangle.js"></script>
+        <script type="text/javascript" src="collision.js"></script>
+        <script type="text/javascript" src="particle.js"></script>	 
+        <script type="text/javascript" src="universe.js"></script>
+        <script type="text/javascript">
+            var uni = new physics.Universe();
+            var p1 = new physics.Particle();
+            p1.setPosition( 0, 0, 0 );
+            p1.setHull( [ 3, 0, 0, 0, 4, 0, 0, 0, -3 ] );
+            var p2 = new physics.Particle();
+            p2.setPosition( 10, 0, 0 );            
+            p2.setHull( [ 2, 0, 0, 0, -2, 0 ] );
+            uni.addParticle( p1 );
+            uni.addParticle( p2 );
+            
+            //rotation speed test
+                p1.angularVelocity = 2;
+                p1._angularVelocity = dian3.scale( [ 0, 1, 0 ] , 2 );
+                function Verb() {
+                    console.log( p1.rotation, p1.obj.cachedMatrix );
+                    console.log( p1.orientation, tetra.angle( p1.orientation ) );
+                    console.log( tetra.rotMatrix( p1.orientation ) );
+                    console.log( p1._orientation ,tetra.angle( p1._orientation ) );
+                    console.log( "-------" );
+                    //uni.updateState( 0.1 );
+                }              
+            //
+            
+            
+            //collision tests
+			if ( p1.radius !== 4 ) alert( "Radius calculation fault : " + p1.radius + " instead of 2" );
+			if ( physics.collision.sphereInterfere( 2, 3, [ 0,0,0 ], [ 5.1,0,0 ] ) !== false ) alert( "Shepe interfere failure" );
+			if ( physics.collision.sphereInterfere( 2, 3, [ 0,0,0 ], [ 4.80,0,0 ] ) !== true ) alert( "Shepe interfere failure 2" );
+            //     
+            
+            
+            //quartenions unit tests
+            function checkRotations( obj, q ) { 
+                var a = obj.cachedMatrix;
+                var b = tetra.rotMatrix( q );
+                for ( var i = 0; i < 16; i++ ) {
+                    if ( Math.abs( a[i] - b[i] ) > 0.0001 ) {
+                        console.log( "error" , i,  a[i] , b[i], a, b );
+                    }
+                }
+                return;
+            }
+            var obj = new gfx.AbstractObject();
+            var q1 = tetra.create( 0,0,0,0 );
+            q1 = tetra.rotateX( q1, Math.PI/2 );
+            obj.rotateX( Math.PI/2 );
+            checkRotations( obj, q1 );
+            for ( var i = 0 ; i< 50000; i++ ) {
+                var ang = 30*Math.random();
+                q1 = tetra.rotateX( q1, ang/2 );
+                obj.rotateX( ang/2 );
+                checkRotations( obj, q1 );
+                q1 = tetra.rotateY( q1, ang/6 );            
+                obj.rotateY( ang/6 );
+                checkRotations( obj, q1 );
+                q1 = tetra.rotateZ( q1, -ang/9 );
+                obj.rotateZ( -ang/9 );
+				checkRotations( obj, q1 );
+				q1 = tetra.rotate( q1, 1, 2, 3, Math.PI/18 );
+				obj.rotate( Math.PI/18, [ 1, 2, 3 ] );
+				checkRotations( obj, q1 );
+			}   
+            //
+
+        </script>
+        <p>Success!!!</p>
+    </body>
+</html

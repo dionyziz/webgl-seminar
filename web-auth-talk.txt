@@ -26,7 +26,7 @@
 
 Demo 1: Το σημείο
 
-http://dionyziz.kamibu.com/web-seminar-auth/0d.html
+http://localhost/web-seminar-auth/0d.html
 
 Τι είναι το HTML5 και το canvas. Σύστημα συντεταγμένων σε 2D. Η έννοια της διάστασης. 0 διαστάσεις.
 Τι είναι το helper.js και γιατί το χρησιμοποιούμε για λόγους απλοποίησης.
@@ -35,13 +35,13 @@ http://dionyziz.kamibu.com/web-seminar-auth/0d.html
 
 Demo 2: Η γραμμή
 
-http://dionyziz.kamibu.com/web-seminar-auth/1d.html
+http://localhost/web-seminar-auth/1d.html
 
 Η 1η διάσταση.
 
 Demo 3: Το επίπεδο
 
-http://dionyziz.kamibu.com/web-seminar-auth/2d.html
+http://localhost/web-seminar-auth/2d.html
 
 Η 2η διάσταση. Ομοιόμορφη τυχαιότητα. Μετασχηματισμός συνάρτησης με scaling (2x) και μετακίνηση (-1).
 Μερικά σχήματα γραφικών παραστάσεων για να καταλάβουν πώς δουλεύει ο μετασχηματισμός επειδή είναι βασικό.
@@ -60,8 +60,8 @@ http://dionyziz.kamibu.com/web-seminar-auth/2d.html
 
 Demo 4: Ο χώρος (χωρίς κλικ!)
 
-http://dionyziz.kamibu.com/web-seminar-auth/3d.html
-http://dionyziz.kamibu.com/web-seminar-auth/3d-actual.html
+http://localhost/web-seminar-auth/3d.html
+http://localhost/web-seminar-auth/3d-actual.html
 
 Εξηγούμε ότι δεν μπορούμε να "δούμε" τα σημεία σε 3d παρ' όλο που έχουμε κάνει προβολή...
 
@@ -71,20 +71,20 @@ http://dionyziz.kamibu.com/web-seminar-auth/3d-actual.html
 
 Demo 5: Σημεία στις πλευρές κύβου
 
-http://dionyziz.kamibu.com/web-seminar-auth/cube.html
+http://localhost/web-seminar-auth/cube.html
 
 Ο κύβος έγινε ξεκάθαρος. Ποιο είναι το επόμενο βήμα για να πάμε πιο κοντά σε έναν 3d κόσμο;
 Πλήρεις πλευρές. Ζωγραφίζουμε τρίγωνα. Σχηματάκι στο μαυροπίνακα κύβου με τρίγωνα.
 
 Demo 6: Κύβος από τρίγωνα χωρίς φωτισμό
 
-http://dionyziz.kamibu.com/web-seminar-auth/cube-solid.html
+http://localhost/web-seminar-auth/cube-solid.html
 
 Πρόβλημα: Δεν ξεχωρίζουμε οι πλευρές. Ας τους δώσουμε διαφορετικό χρώμα.
 
 Demo 7: Κύβος από τρίγωνα με διαφορετικά χρώματα
 
-http://dionyziz.kamibu.com/web-seminar-auth/cube-solid-random-colors.html
+http://localhost/web-seminar-auth/cube-solid-random-colors.html
 
 Ερώτηση προς το κοινό: Ποιοι έχουν ολοκληρώσει ένα μάθημα γραμμικής άλγεβρας;
 
@@ -136,7 +136,7 @@ x' = x + s
 
 Demo 12: Κύβος που μετακινείται στον άξονα xx'
 
-TODO
+http://localhost/web-seminar-auth/translation.html
 
 Μετασχηματισμός: Η μεγέθυνση. Εξήγηση στο μαυροπίνακα.
 x' = λx
@@ -145,7 +145,7 @@ z' = λz
 
 Demo 13: Κύβος που μεγενθύνεται
 
-TODO
+http://localhost/web-seminar-auth/scaling.html
 
 Μετασχηματισμός: Η περιστροφή σε 2 διαστάσεις. ("Αντίστοιχα γενικεύεται και στις 3")
 Εξήγηση στο μαυροπίνακα.
@@ -157,6 +157,10 @@ r' = r
 x' = r'cosφ'
 y' = r'sinφ'
 
+Demo 13.5: Κύβος που περιστρέφεται
+
+http://localhost/web-seminar-auth/rotation.html
+
 Ερώτηση στο κοινό για το ποιος έχει ακούσει για πολικές συντεταγμένες.
 Δεν χρειάζεται demo, το είδαμε νωρίτερα.
 
@@ -167,75 +171,75 @@ y' = r'sinφ'
 
 Demo 14: Το σημείο ως σωματίδιο
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/1_point.html
+http://localhost/web-seminar-auth/particles/1_point.html
 
 Δεν είναι τίποτα άλλο παρά ένα απλό σημείο. Όμως θα του δώσουμε ιδιαίτερες ιδιότητες.
 
 Demo 15: Ένα σωματίδιο που μετακινείται
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/2_motion.html
+http://localhost/web-seminar-auth/particles/2_motion.html
 
 Πάλι η ίδια ιδέα του animation.
 
 Demo 16: Σύστημα σωματιδίων σε γραμμή
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/3_line.html
+http://localhost/web-seminar-auth/particles/3_line.html
 
 Αναπαριστώντας συστάδα σωματιδίων με έναν πίνακα. Θέση/ταχύτητα σημείων. 1D
 
 Demo 17: Σημεία με χρόνο ζωής
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/4_lifetime.html
+http://localhost/web-seminar-auth/particles/4_lifetime.html
 
 Περιορισμός στο πλήθος των σωματιδίων. Η ιδέα του χρόνου ζωής και η τυχαιότητα.
 Γέννηση - θάνατος - ξαναγέννηση.
 
 Demo 18: Σημεία που διαχέονται στο επίπεδο
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/5_surface.html
+http://localhost/web-seminar-auth/particles/5_surface.html
 
 Μπορούμε να πετύχουμε ωραία αποτελέσματα χωρίς 3D! Που να φαίνονται καλά
 ακόμη και σε 3D κόσμους.
 
 Demo 19: Σημεία με βαρύτητα
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/6_gravity.html
+http://localhost/web-seminar-auth/particles/6_gravity.html
 
 Εισάγοντας επιτάχυνση.
 
 Demo 20: Χρήση εικόνας
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/7_fire.html
+http://localhost/web-seminar-auth/particles/7_fire.html
 
 Πάμε κοντά σε φωτιά. Πώς μπορούμε να το κάνουμε πιο αληθοφανές;
 
 Demo 21: Αντιστροφή βαρύτητας
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/8_fire.html
+http://localhost/web-seminar-auth/particles/8_fire.html
 
 Demo 22: Τυχαίες περιστροφές
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/9_fire.html
+http://localhost/web-seminar-auth/particles/9_fire.html
 
 Demo 23: Fade out ανάλογο του χρόνου ζωής που απομένει
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/10_fire.html
+http://localhost/web-seminar-auth/particles/10_fire.html
 
 Η ίδια ιδέα μπορεί να χρησιμοποιηθεί για πάρα πολλά εφέ.
 
 Demo 24: Καπνός
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/11_smoke.html
+http://localhost/web-seminar-auth/particles/11_smoke.html
 
 Demo 25: Φύλλα που πέφτουν
 
-http://dionyziz.kamibu.com/web-seminar-auth/particles/12_leaf.html
+http://localhost/web-seminar-auth/particles/12_leaf.html
 
 Demo 26: Particle explosion
 
 [credit: Giles Thomas]
 
-http://learningwebgl.com/lessons/example03/particles-02.html
+http://localhost/web-seminar-auth/particles-02.html
 
 Φορτώνοντας πιο περίπλοκα αντικείμενα από αρχεία:
 

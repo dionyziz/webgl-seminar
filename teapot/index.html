@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Web-GL</title>
+        <style type="text/css">
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="sylvester.src.js"></script>
+        <script type="text/javascript" src="glMatrix.js"></script>
+        <script type="text/javascript" src="engine.js"></script>
+        <div style="display:none" id="log"></div>
+        
+        <script type="text/javascript">
+            if( typeof console === 'undefined' ) {
+                console = { log: function(a) { document.getElementById( 'log' ).innerHTML += a} };
+            }
+            //Init a WebGL context and return a handle to the canvas element
+            var canvas = engine.init( window.innerWidth, window.innerHeight );
+            //Append the canvas element to the document
+            document.body.appendChild( canvas );
+            
+            //Set the camera location ( x, y, z ) and direction ( pitch, yaw, roll )
+            engine.setCamera( 0, 0, 0, 0, 0, 0 );
+            
+            engine.setLight( {
+                position: [ 0, 0, 0, 1 ],
+                ambientColor: [ 0, 0, 0, 1 ],
+                diffuseColor: [ 1, 1, 1, 1 ],
+                specularColor: [ 1, 1, 1, 1 ],
+                spotDirection: [ 0, 0 , -1 ],
+                attenuationFactors: [ 1000000, 1000000, 1000000 ],
+                computeDistanceAttenulation: 0,
+                spotExponent: 1,
+                spotCutoffAngle: 10
+            } );
+            
+            var instance, teapot;
+            
+            //Load model asynchronously
+            $.getJSON( 'teapot.js', {}, function( model ) {
+                //Load teapot model. Normals are calculated automatically unless provided.
+                teapot = new engine.Model( {
+                    vertices: model.vertices, 
+                    indices: model.indices,
+                    material: {
+                        ambientColor: [ 0, 0, 0, 1 ],
+                        diffuseColor: [ 0.7, 0.8, 0.8, 1 ],
+                        specularColor: [ 1, 1, 1, 1 ],
+                        specularExponent: 30
+                    }
+                } );
+                //Add a teapot instance to the world
+                instance = new engine.Instance( teapot );
+                //Move it away from the camera 400 units in the negative Z axis
+                instance.setTranslation( 0 , 0, -370 );
+                instance.rotate( Math.PI / 2 , 0 , 0);
+                //Render the scene every 15ms
+                setInterval( Render, 15 );
+            } );
+            
+            setInterval( Render, 15 );
+            
+            function Render() {
+                instance.rotate( 0.005, 0.005, 0.005 );
+                //Draw all objects in the scene
+                engine.draw();    
+            };
+        </script>
+    </body>
+</html>

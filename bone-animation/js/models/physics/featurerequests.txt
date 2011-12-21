@@ -1,0 +1,3 @@
+* Rotation support for particles: current rotation (angle in radians), angular velocity and angular acceleration
+* Let me speficy object speed! particle.setSpeed( vx, vy, vz )
+* Callback for rotation changes! particle.setRotateCallback( callback( dpitch, dyaw, droll ) )

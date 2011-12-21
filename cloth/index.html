@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+    Developed by Petros Aggelatos <petros@kamibu.com>
+    (c) 2011, Kamibu. All rights reserved.
+-->
+<html>
+	<head>
+		<title>Cloth Simulation Demo</title>
+        <style>
+            html, body, canvas {
+                margin:  0px;
+                padding: 0;
+                border: 0;
+                overflow: hidden;
+                background: black;
+            }
+            #copyright {
+                z-index: 2;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                padding: 5px;
+                color: #999;
+                font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+            }
+            #copyright a {
+                color: #aaa;
+            }
+            #overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 350px;
+            }
+            #info {
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                z-index: 2;
+                color: white;
+                background-color: rgba( 255, 255, 255, 0.1 );
+                width: 400px;
+                padding: 10px 0 10px 10px;
+                font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+                border-radius: 10px;
+            }
+            img {
+                display: block;
+            }
+            .fb-like {
+                display: block;
+                margin: 5px;
+            }
+            .twitter {
+                margin: 5px;
+            }
+        </style>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	</head>
+	<body>
+        <div id="overlay">
+            <a href="http://kamibu.com">
+                <img src="http://kamibu.com/kamibu_logo.jpg" width="250" title="Kamibu Logo"/>
+            </a>
+            <div class="fb-like" data-href="http://kamibu.com/demos/cloth-simulation" data-send="false" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
+            <div class="twitter">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-text="Cloth simulation in #WebGL #GPGPU #Javascript" data-lang="en">Tweet</a>
+            </div>
+        </div>
+
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=291028860938891";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+        <div id="copyright">
+            &copy;2011 <a href="http://vl.kamibu.com/">Kamibu</a>
+        </div>
+
+        <div id="info">
+            Use your <strong>arrow keys</strong> to rotate the camera.<br/>
+            Use <strong>SPACE</strong> key to introduce an up pointing wind.
+        </div>
+        <script type="text/javascript" src="js/views/jquery/jquery-1.5.min.js"></script>
+		<script type="text/javascript" src="js/views/graphics/new/glMatrix.js"></script>
+        <script type="text/javascript">
+            var require = {
+                packages: [
+                    {
+                        name: "physics",
+                        location: "models/physics",
+                        lib: ".",
+                        main: "physics"
+                    },
+                    {
+                        name: "graphics",
+                        location: "views/graphics/new",
+                        lib: ".",
+                        main: "main"
+                    }
+                ],
+                deps: [ 'libs/extender' ]
+            };
+        </script>
+        <script data-main="js/cloth" src="js/require.js"></script>
+
+    </body>
+</html>

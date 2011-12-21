@@ -1,0 +1,4 @@
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Max-Age "86400"
+Header set Access-Control-Allow-Methods "GET"
+Header set Access-Control-Allow-Headers "Content-Type, Depth, User-A    gent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-C    ontrol"
