@@ -2001,8 +2001,7 @@ var Renderer = function( canvas, width, height ) {
     /*
      * This should change to .getContext( 'webgl' ) at some point.
      */
-    var gl = this.gl = this.canvas.getContext( 'experimental-webgl', {
-        preserveDrawingBuffer: true } );
+    var gl = this.gl = this.canvas.getContext( 'experimental-webgl' );
     if ( this.gl === null ) {
         throw 'Could not initialize WebGL';
     }
