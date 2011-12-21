@@ -14,13 +14,12 @@
             var cube = null;
             app.importer.load( 'WeightedCompanionCubeHearted.obj', function( node ) {
                 cube = node;
-                cube.setScale( 2 );
                 app.scene.appendChild( cube );
             } );
-            app.update = function() {
+            app.update = function( dt ) {
                 if ( cube ) {
-                    cube.rotate( X_AXIS, 0.01 );
-                    cube.rotate( Y_AXIS, 0.02 );
+                    cube.rotate( X_AXIS, 0.01 * dt / 16 );
+                    cube.rotate( Y_AXIS, 0.02 * dt / 16 );
                 }
             };
         </script>
