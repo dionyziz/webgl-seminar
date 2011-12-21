@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Particle effects</title>
+        <style>
+            body {
+                background-color: black;
+            }
+            canvas {
+                background-color: black;
+                margin: auto;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id='canvas' width='600' height='600'></canvas>
+        <script src='helper.js'></script>
+        <script>
+            var particle = {
+                position: 300
+            };
+            
+            function render() {
+                ctx.clearRect( 0, 0, 600, 600 );
+                drawPoint( particle.position, 200 );
+            }
+            
+            setInterval( render, 30 );
+        </script>
+    </body>
+</html>
+

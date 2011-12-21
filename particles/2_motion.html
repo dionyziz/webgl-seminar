@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Particle effects</title>
+        <style>
+            body {
+                background-color: black;
+            }
+            canvas {
+                background-color: black;
+                margin: auto;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id='canvas' width='600' height='600'></canvas>
+        <script src='helper.js'></script>
+        <script>
+            var particle = {
+                position: 300,
+                velocity: Math.random() * 10 - 5
+            };
+            
+            function integrate() {
+                particle.position += particle.velocity;
+            }
+            
+            function render() {
+                clearCanvas();
+                drawPoint( particle.position, 200 );
+            }
+            
+            setInterval( render, 30 );
+            setInterval( integrate, 30 );
+        </script>
+    </body>
+</html>
+

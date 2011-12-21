@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Particle effects</title>
+        <style>
+            body {
+                background-color: black;
+            }
+            canvas {
+                background-color: black;
+                margin: auto;
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id='canvas' width='600' height='600'></canvas>
+        <script src='helper.js'></script>
+        <script>
+            var N = 50;
+            var particles = [];
+            
+            function integrate() {
+                for ( var i = 0; i < particles.length; ++i ) {
+                    particles[ i ].velocity[ 1 ] += 0.02;
+                    var v = particles[ i ].velocity;
+                    particles[ i ].position[ 0 ] += v[ 0 ];
+                    particles[ i ].position[ 1 ] += v[ 1 ];
+                    --particles[ i ].lifetime;
+                    if ( particles[ i ].lifetime < 0 ) {
+                        birth( i );
+                    }
+                }
+            }
+            
+            function render() {
+                ctx.clearRect( 0, 0, W, H );
+                for ( var i = 0; i < particles.length; ++i ) {
+                    var r = particles[ i ].position;
+                    drawPoint( r[ 0 ], r[ 1 ] );
+                }
+            }
+            
+            function birth( i ) {
+                particles[ i ] = {
+                    position: [ W / 2, H / 2 ],
+                    velocity: [ Math.random() - 0.5, Math.random() - 0.5 ],
+                    lifetime: Math.random() * 100 + 100
+                };
+            }
+            for ( var i = 0; i < N; ++i ) {
+                birth( i );
+            }
+            
+            setInterval( render, 30 );
+            setInterval( integrate, 30 );
+        </script>
+    </body>
+</html>
+
