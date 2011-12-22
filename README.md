@@ -1,6 +1,8 @@
 Lecture notes, slides and demos for our 2-hour lecture on 21 December 2011 "Computer Graphics for the Web"
 at the Aristotle University of Thessaloniki.
 
+Fork this on github: https://github.com/dionyziz/web-seminar-auth
+
 Event: http://www.facebook.com/events/309646999067845/
 
 Instructors:
