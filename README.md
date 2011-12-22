@@ -9,6 +9,10 @@ Instructors:
 Dionysis "dionyziz" Zindros <dionyziz@gmail.com>
 Petros Aggelatos <petros@kamibu.com>
 
+(The demos have been created in Google Chrome. Most of them should work but have
+not been tested under other browsers such as Firefox, Opera, or Safari. This is
+not an issue with the other browsers, but lack of compatibility in our code.)
+
 The slides, text, lecture notes, instructional drawings and diagrams are licensed under
 Creative Commons Attribution 3.0.
 
