@@ -1,0 +1,87 @@
+<!--
+    Developers:
+        Petros Aggelatos <petros@kamibu.com>
+        Dionysis "dionyziz" Zindros <dionyziz@gmail.com>
+
+    Copyright (c) 2011, Petros Aggelatos and Dionysis Zindros
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    Neither the name of the Kamibu Limited nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Computer Graphics</title>
+        <base href='..' />
+        <link rel='stylesheet' href='style.css' />
+    </head>
+    <body>
+        <canvas></canvas>
+        <script src='libraries/helper2.js'></script>
+        <script>
+            function rotateY( point, theta ) {
+                return [
+                    point[ 0 ] * Math.cos( theta ) - point[ 2 ] * Math.sin( theta ),
+                    point[ 1 ],
+                    point[ 0 ] * Math.sin( theta ) + point[ 2 ] * Math.cos( theta )
+                ];
+            }
+            function rotateX( point, theta ) {
+                return [
+                    point[ 0 ],
+                    point[ 1 ] * Math.cos( theta ) - point[ 2 ] * Math.sin( theta ),
+                    point[ 1 ] * Math.sin( theta ) + point[ 2 ] * Math.cos( theta ),
+                ];
+            }
+            function createSides() {
+                var ret = [];
+                var STEP = 0.2;
+
+                for ( var x = -1; x <= 1; x += 2 ) {
+                    for ( var y = -1; y <= 1; y += STEP ) {
+                        for ( var z = -1; z <= 1; z += STEP ) {
+                            ret.push( [ x, y, z ] );
+                        }
+                    }
+                }
+                return ret;
+            }
+
+            var points = createSides();
+            points.push.apply( points, createSides().map( function( point ) {
+                return rotateY( point, Math.PI / 2 );
+            } ) );
+            points.push.apply( points, createSides().map( function( point ) {
+                return rotateX( rotateY( point, Math.PI / 2 ), Math.PI / 2 );
+            } ) );
+
+            function render() {
+                ctx.fillStyle = 'black';
+                ctx.fillRect( -10, -10, 20, 20 );
+
+                for ( var i in points ) {
+                    var point = points[ i ];
+                    var x = point[ 0 ];
+                    var y = point[ 1 ];
+                    var z = point[ 2 ];
+
+                    points[ i ] = rotateY( points[ i ], 0.01 );
+                    points[ i ] = rotateX( points[ i ], 0.005 );
+
+                    x = x / ( z / 2 + 2 );
+                    y = y / ( z / 2 + 2 );
+
+                    drawPoint( x, y );
+                }
+            }
+
+            setInterval( render, 17 );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!--
+    Developers:
+        Dionysis "dionyziz" Zindros <dionyziz@gmail.com>
+
+    Copyright (c) 2011, Dionysis Zindros
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    Neither the name of the Kamibu Limited nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Particle effects</title>
+        <style>
+            body {
+                background-color: black;
+            }
+            canvas {
+                background-color: black;
+                margin: auto;
+                display: block;
+            }
+            img {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <img src='leaf.png' alt='A leaf' id='drop' />
+        <canvas id='canvas' width='600' height='600'></canvas>
+        <script src='helper.js'></script>
+        <script>
+            var N = 50;
+            var img = document.getElementById( 'drop' );
+            var particles = [];
+            var gravity = 0.02;
+            
+            function integrate() {
+                for ( var i = 0; i < particles.length; ++i ) {
+                    particles[ i ].velocity[ 1 ] += gravity;
+                    var v = particles[ i ].velocity;
+                    particles[ i ].position[ 0 ] += v[ 0 ];
+                    particles[ i ].position[ 1 ] += v[ 1 ];
+                    particles[ i ].angle += particles[ i ].omega;
+                    --particles[ i ].lifetime;
+                    if ( particles[ i ].lifetime < 0 ) {
+                        birth( i );
+                    }
+                }
+            }
+            
+            function render() {
+                clearCanvas();
+                for ( var i = 0; i < particles.length; ++i ) {
+                    var particle = particles[ i ];
+                    var r = particle.position;
+                    drawImage( r[ 0 ], r[ 1 ], img, particle.angle, particle.lifetime / particle.maxlifetime );
+                }
+            }
+            
+            function birth( i ) {
+                particles[ i ] = {
+                    position: [ Math.random() * W, -img.height ],
+                    velocity: [ Math.random() * 2 - 1, Math.random() * 2 - 1 ],
+                    maxlifetime: Math.floor( Math.random() * 50 + 100 ),
+                    angle: Math.random() * Math.PI * 2,
+                    omega: Math.random() / 20
+                };
+                particles[ i ].lifetime = particles[ i ].maxlifetime;
+            }
+            
+            // ctx.globalCompositeOperation = 'darker';
+
+            img.onload = function () {
+                for ( var i = 0; i < N; ++i ) {
+                    birth( i );
+                }
+                setInterval( render, 30 );
+                setInterval( integrate, 30 );
+            };
+        </script>
+    </body>
+</html>
+

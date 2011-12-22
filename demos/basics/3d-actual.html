@@ -1,0 +1,68 @@
+<!--
+    Developers:
+        Petros Aggelatos <petros@kamibu.com>
+        Dionysis "dionyziz" Zindros <dionyziz@gmail.com>
+
+    Copyright (c) 2011, Petros Aggelatos and Dionysis Zindros
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    Neither the name of the Kamibu Limited nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Computer Graphics</title>
+        <base href='..' />
+        <link rel='stylesheet' href='style.css' />
+    </head>
+    <body>
+        <canvas></canvas>
+        <script src='libraries/helper2.js'></script>
+        <script>
+            var points = [];
+            var NUM_POINTS = 500;
+
+            for ( var i = 0; i < NUM_POINTS; ++i ) {
+                var x = Math.random() * 2 - 1;
+                var y = Math.random() * 2 - 1;
+                var z = Math.random() * 2 - 1;
+
+                points.push( [ x, y, z ] );
+            }
+
+            function render() {
+                var x, y, z, point;
+
+                clearCanvas();
+
+                for ( var i = 0; i < NUM_POINTS; ++i ) {
+                    point = points[ i ];
+                    x = point[ 0 ];
+                    y = point[ 1 ];
+                    z = point[ 2 ];
+
+                    points[ i ] = rotateY( points[ i ], 0.01 );
+                    points[ i ] = rotateX( points[ i ], 0.005 );
+
+                    x = x / ( z / 2 + 1.5 );
+                    y = y / ( z / 2 + 1.5 );
+
+                    drawPoint( x, y );
+                }
+            }
+
+            function startMoving() {
+                setInterval( render, 17 );
+                document.body.removeEventListener( 'click', startMoving );
+            } 
+            document.body.addEventListener( 'click', startMoving );
+            render();
+        </script>
+    </body>
+</html>
