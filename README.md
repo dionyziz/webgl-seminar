@@ -1,9 +1,10 @@
-Lecture notes, slides and demos for our 2-hour lecture on 21 December 2011 "Computer Graphics for the Web"
-at the Aristotle University of Thessaloniki.
+Lecture notes, slides and demos for our 2-hour lecture on 25 April 2012 "WebGL: Computer Graphics for the Web" at the National Technical University of Athens and on 21 December 2011 "Computer Graphics for the Web" at the Aristotle University of Thessaloniki.
 
-Fork this on github: https://github.com/dionyziz/web-seminar-auth
+Fork this on github: https://github.com/dionyziz/webgl-seminar
 
-Event: http://www.facebook.com/events/309646999067845/
+Events:
+http://www.facebook.com/events/344450302257867/
+http://www.facebook.com/events/309646999067845/
 
 Instructors:
 Dionysis "dionyziz" Zindros <dionyziz@gmail.com>
